@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" /> 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Rhythm Typist</title>
-<link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
 
 </head>
 
@@ -22,7 +23,13 @@
 
   </div>
 
-  <input id="input" placeholder="여기에 커서를 두고 타이핑" /> 
+  <input id="input"
+    inputmode="text"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    spellcheck="false"
+    placeholder="여기에 커서를 두고 타이핑" /> 
   <button id="start">시작</button>
 
   <div id="judge">-</div>

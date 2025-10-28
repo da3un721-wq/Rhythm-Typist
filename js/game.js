@@ -173,9 +173,10 @@ while (st.i < st.times.length && elapsed - st.times[st.i] > autoMissMS) {
 
 
 function handleCharInput(ch, isIME=false){
+  const IS_MOBILE = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   if(!st) return;
   const now = performance.now() - st.t0;
-  const tol = isIME ? HIT_MS * 2.2 : HIT_MS; 
+  const tol = (isIME ? HIT_MS * 2.2 : HIT_MS) * (IS_MOBILE ? 1.5 : 1.0);
 
 while (st.i < st.times.length && now - st.times[st.i] > tol) {
     applyMiss();                            
@@ -318,6 +319,13 @@ $input.addEventListener('compositionend', (e) => {
   setEcho('');
 });
 
+$input.addEventListener('beforeinput', (e) => {
+  if (e.inputType === 'insertText' && e.data) {
+    const ch = e.data.normalize('NFC');
+    handleCharInput(ch[ch.length - 1], true);
+  }
+});
+
 
 
 $input.addEventListener('keydown', (e) => {
@@ -341,3 +349,16 @@ function isKoreanJamo(ch){
 
 
 document.getElementById('start').addEventListener('click', start);
+
+function focusInput(){
+  $input.focus();
+  setTimeout(() => $input.scrollIntoView({block:'center'}), 0);
+}
+
+document.getElementById('start').addEventListener('click', () => {
+  start();
+  focusInput(); 
+});
+
+$lane.addEventListener('touchstart', focusInput, {passive:true});
+
