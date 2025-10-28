@@ -1,0 +1,135 @@
+*{box-sizing:border-box} 
+
+body{
+    margin:0;padding:16px;background:#0e0e10;color:#e9e9ee;font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif
+}
+
+h1{
+    margin:0 0 12px 0;font-size:18px;opacity:.9
+}
+
+#target{
+    margin-bottom:8px;line-height:1.6;word-break:keep-all
+}
+
+#lane{
+    position:relative;
+    width:min(860px,100%);
+    height:120px;
+    border:1px solid #2a2a2e;
+    border-radius:8px;
+    background:#101014;overflow:hidden;margin:8px 0
+}
+
+#hitline{
+    position:absolute;
+    left:120px;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:#58a6ff;
+    box-shadow:0 0 8px #58a6ff
+    }
+
+.note{
+    position:absolute;
+    top:50px;
+    min-width:16px;
+    height:16px;
+    padding:10px;
+    border-radius:999px;
+    background:#cfd3da;
+    color:#111;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:30px;
+    transform:translateX(0)
+}
+
+.note.space{
+    background:#b9c0c9
+}
+
+.note.punc{
+    background:#e3d6ff
+}
+
+.note.target{
+    outline:2px solid #fff
+}
+
+#input{
+    width:100%;
+    max-width:860px;
+    padding:8px;
+    border:1px solid #2a2a2e;
+    border-radius:6px;
+    background:#141419;
+    color:#e9e9ee
+}
+
+#start{
+    margin-top:8px;
+    padding:6px 10px
+}
+
+#hud{
+    margin-top:8px;
+    opacity:.8
+}
+
+#judge{
+    height:22px;
+    margin-top:6px;
+    font-weight:700
+}
+
+.perfect{
+    color:#76ff6b
+}
+
+.good{
+    color:#ffd659
+}
+
+.miss{
+    color:#ff5d6c
+}
+
+#hitbox {
+  position:absolute;
+  left:110px; top:20px;
+  width:20px; height:80px;
+  border:1px dashed rgba(88,166,255,0.8);
+  background:rgba(88,166,255,0.1);
+  border-radius:4px;
+  z-index: 3; pointer-events: none;
+}
+
+#typingEcho {
+  position:absolute;
+  left:118px; top:50px;
+  transform:translateX(-50%);
+  color:#76a9ff; font-weight:700;
+  font-size:30px;
+  z-index: 3; pointer-events: none;
+}
+
+#hitbox, #typingEcho { z-index: 3; pointer-events: none; }
+
+.note.inwindow{
+  outline:2px solid #fff;
+  background:#fff;
+  box-shadow:0 0 10px rgba(255,255,255,.9);
+}
+
+#matchFlash{
+  position:absolute; top:44px;
+  width:18px; height:18px; border-radius:50%;
+  opacity:0; transition:opacity .12s ease;
+  z-index:5; pointer-events:none;
+}
+#matchFlash.flash-ok{  background:#76ff6b; box-shadow:0 0 12px #76ff6b; }
+#matchFlash.flash-bad{ background:#ff5d6c; box-shadow:0 0 12px #ff5d6c; }
